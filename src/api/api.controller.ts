@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { ApiService } from './api.service.js';
 import { CreateApiDto } from './dto/create-api.dto.js';
 import { UpdateApiDto } from './dto/update-api.dto.js';
@@ -6,6 +14,11 @@ import { UpdateApiDto } from './dto/update-api.dto.js';
 @Controller('api')
 export class ApiController {
   constructor(private readonly apiService: ApiService) {}
+
+  @Get('health')
+  returnHello() {
+    return 'hello world, health is starting!';
+  }
 
   @Post()
   create(@Body() createApiDto: CreateApiDto) {
